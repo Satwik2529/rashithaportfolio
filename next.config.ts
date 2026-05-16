@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const appRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
-  // Ensure Turbopack resolves from the Portfolio app folder, not the parent `port/` directory.
-  turbopack: {
-    root: appRoot,
+  // For static export (GitHub Pages, Netlify, Render, etc.)
+  output: 'export',
+  // Disable image optimization for static export
+  images: {
+    unoptimized: true,
   },
+  // Disable Turbopack for build (use webpack for static export)
+  // Turbopack doesn't support static export yet
 };
 
 export default nextConfig;
